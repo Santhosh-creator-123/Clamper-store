@@ -1,0 +1,53 @@
+<%- include('../partials/header') %>
+
+  <!-- Page Title -->
+  <main>
+    <h2>All Products</h2>
+
+    <!-- Sort Dropdown -->
+    <div class="sort-bar">
+      <label for="sort">Sort by:</label>
+      <select id="sort">
+        <option value="default">Default</option>
+        <option value="price-low-high">Price: Low to High</option>
+        <option value="price-high-low">Price: High to Low</option>
+        <option value="newest">Newest</option>
+      </select>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid">
+      <div class="product-card">
+        <img src="/images/product1.jpg" alt="Product 1">
+        <h3>Panda Lamp</h3>
+        <p>$29.99</p>
+        <a href="/cart" class="btn">Add to Cart</a>
+        <a href="/checkout" class="btn">Buy Now</a>
+
+      </div>
+
+      <div class="product-card">
+        <img src="/images/product2.jpg" alt="Product 2">
+        <h3>Cat Lamp</h3>
+        <p>$49.99</p>
+        <a href="/cart" class="btn">Add to Cart</a>
+        <a href="/checkout" class="btn">Buy Now</a>
+
+      </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <a href="#">&laquo; Prev</a>
+      <a href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">Next &raquo;</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+ 
+<%- include('../partials/footer') %>
+
