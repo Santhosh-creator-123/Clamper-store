@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Vandrenser</title>
+    <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">VANDRENSER</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html" class="active">Cart <span id="cart-count"></span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <h1>Your Shopping Cart</h1>
+        <div id="cart-items" class="cart-items-container">
+            <!-- Populated by JS -->
+            <p>Your cart is currently empty.</p>
+        </div>
+        <div class="cart-summary">
+            <h3>Total: $<span id="cart-total-amount">0.00</span></h3>
+            <a href="checkout.html" class="btn btn-primary" id="checkout-btn">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <h3 style="color: var(--primary-copper); margin-bottom: 1rem;">VANDRENSER</h3>
+            <p style="max-width: 600px; margin: 0 auto 1rem auto;">Premium copper cards for weddings, birthdays, and
+                invitations. Tradition meets health.</p>
+            <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">&copy; 2026 Vandrenser. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="public/js/app.js"></script>
+</body>
+
+</html>

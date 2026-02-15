@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vandrenser - Premium Copper Cards</title>
+    <meta name="description"
+        content="Handcrafted copper wedding and invitation cards that purify water. Premium aesthetics meet ancient health wisdom.">
+    <link rel="stylesheet" href="public/style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="brand">VANDRENSER</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart <span id="cart-count"></span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Timeless Copper. Pure Celebration.</h1>
+            <p>Elevate your invitations with the antimicrobial power and elegance of pure copper.</p>
+            <a href="products.html" class="btn btn-primary">Shop Collection</a>
+        </div>
+    </section>
+
+    <!-- Introduction/About (Brief) -->
+    <section class="intro">
+        <div class="container">
+            <h2>Why Copper?</h2>
+            <p>Copper is not just beautiful; it's self-sterilizing. Our unique invitation cards serve a dual purpose: a
+                stunning announcement and a water purification tool for your guests.</p>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <div class="container">
+            <h2>Featured Collections</h2>
+            <div id="products-grid" class="product-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3 style="color: var(--primary-copper); margin-bottom: 1rem;">VANDRENSER</h3>
+            <p style="max-width: 600px; margin: 0 auto 1rem auto;">Premium copper cards for weddings, birthdays, and
+                invitations. Tradition meets health.</p>
+            <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.9rem;">&copy; 2026 Vandrenser. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="public/js/app.js"></script>
+    <script>
+        // Specific logic for home page if any
+        document.addEventListener('DOMContentLoaded', () => {
+            const featuredContainer = document.getElementById('products-grid');
+            if (featuredContainer && typeof products !== 'undefined') {
+                const featured = products.slice(0, 3);
+                featuredContainer.innerHTML = featured.map(product => `
+                  <div class="product-card">
+                      <img src="${product.image}" alt="${product.name}">
+                      <h3>${product.name}</h3>
+                      <p>$${product.price.toFixed(2)}</p>
+                      <a href="product_detail.html?id=${product.id}" class="btn">View Details</a>
+                  </div>
+              `).join('');
+            }
+        });
+    </script>
+</body>
+
+</html>

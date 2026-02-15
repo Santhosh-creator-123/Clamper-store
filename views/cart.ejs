@@ -1,0 +1,91 @@
+<%- include('../partials/header') %>
+
+    <div class="section-padding">
+        <div class="container">
+            <div class="text-center mb-2">
+                <h1>Your Shopping Cart</h1>
+            </div>
+
+            <div class="cart-layout">
+                <!-- Cart Items -->
+                <div class="table-container">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Details</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td width="100">
+                                    <img src="/images/copper-card-1.jpg" alt="Product"
+                                        style="width: 80px; height: 80px; object-fit: cover; border-radius: var(--radius-sm);">
+                                </td>
+                                <td>
+                                    <strong>Royal Copper Wedding Invite</strong><br>
+                                    <small style="color: var(--text-muted);">Size: Large (7x10")</small>
+                                </td>
+                                <td>$40.00</td>
+                                <td>
+                                    <input type="number" value="2" min="1"
+                                        style="width: 60px; padding: 0.5rem; border: 1px solid var(--border-light); border-radius: 4px;">
+                                </td>
+                                <td style="font-weight: 600;">$80.00</td>
+                                <td>
+                                    <button class="btn btn-secondary"
+                                        style="padding: 0.5rem; border: none; color: #e74c3c; font-size: 1.2rem;"
+                                        onclick="removeItem()">&times;</button>
+                                </td>
+                            </tr>
+                            <!-- Repeat rows if needed -->
+                        </tbody>
+                    </table>
+                    <div style="padding: 1.5rem; text-align: right;">
+                        <a href="/products" class="btn btn-secondary">Update Cart</a>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="cart-summary-card">
+                    <h3 style="margin-bottom: 1.5rem;">Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>$80.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span>$10.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax Estimate</span>
+                        <span>$7.20</span>
+                    </div>
+
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span>$97.20</span>
+                    </div>
+
+                    <a href="/checkout" class="btn btn-primary btn-full mt-2">Proceed to Checkout</a>
+                    <a href="/products" class="btn btn-secondary btn-full mt-1" style="border: none;">Continue
+                        Shopping</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function removeItem() {
+            if (confirm('Remove this item?')) {
+                alert('Item removed (demo implementation)');
+            }
+        }
+    </script>
+
+    <%- include('../partials/footer') %>

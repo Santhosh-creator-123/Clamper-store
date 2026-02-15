@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+
+  <div class="section-padding" style="padding-top: 4rem;">
+    <div class="container">
+      <div class="text-center mb-2">
+        <h1 style="margin-bottom: 1rem;">Our Exclusive Collection</h1>
+        <p style="max-width: 600px; margin: 0 auto; color: var(--text-muted);">
+          Browse our range of exquisitely crafted copper cards for weddings, birthdays, and special invitations.
+        </p>
+      </div>
+
+      <div class="product-grid">
+        <% if (products && products.length> 0) { %>
+          <% products.forEach(function(product) { %>
+            <div class="product-card">
+              <a href="/product/<%= product.id %>" class="product-image-wrapper">
+                <img src="<%= product.image %>" alt="<%= product.name %>">
+              </a>
+              <div class="product-details">
+                <h3 class="product-title">
+                  <%= product.name %>
+                </h3>
+                <p class="product-price">$<%= product.price.toFixed(2) %>
+                </p>
+                <a href="/product/<%= product.id %>" class="btn btn-secondary btn-full">Customize & Buy</a>
+              </div>
+            </div>
+            <% }); %>
+              <% } else { %>
+                <p class="text-center">Loading products...</p>
+                <% } %>
+      </div>
+    </div>
+  </div>
+
+  <%- include('../partials/footer') %>

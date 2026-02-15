@@ -1,0 +1,119 @@
+<%- include('../partials/header') %>
+
+    <div class="container section-padding">
+        <div class="product-detail-layout">
+            <!-- Gallery / Image -->
+            <div class="detail-gallery">
+                <div class="product-image-wrapper" style="padding-top: 100%;">
+                    <img src="<%= product.image %>" alt="<%= product.name %>"
+                        style="object-fit: contain; padding: 2rem;">
+                </div>
+            </div>
+
+            <!-- Info & Form -->
+            <div class="detail-content">
+                <span class="detail-type">
+                    <%= product.type %>
+                </span>
+                <h1 class="detail-title">
+                    <%= product.name %>
+                </h1>
+                <p class="detail-price" id="display-price">$<%= product.price.toFixed(2) %>
+                </p>
+
+                <p class="detail-description">
+                    <%= product.description %>
+                </p>
+
+                <div
+                    style="background: var(--bg-body); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
+                    <h3 style="margin-bottom: 1.5rem;">Customize Your Card</h3>
+
+                    <div class="form-group">
+                        <label for="size" class="form-label">Size</label>
+                        <select id="size" class="form-control" onchange="updatePrice()">
+                            <option value="standard" selected>Standard (5x7") - Base Price</option>
+                            <option value="large">Large (7x10") - +$10</option>
+                            <option value="custom">Custom Size - +$15</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="etching" class="form-label">Custom Etching Text (Optional)</label>
+                        <input type="text" id="etching" class="form-control"
+                            placeholder="E.g., 'John & Jane - Forever Together'" onchange="updatePrice()">
+                        <small
+                            style="color: var(--text-light); display: block; margin-top: 0.5rem; font-size: 0.8rem;">+$5
+                            per line of custom text</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" id="quantity" class="form-control" value="1" min="1" max="100"
+                            onchange="updatePrice()">
+                    </div>
+
+                    <div class="d-flex justify-between align-center mb-1"
+                        style="padding: 1rem 0; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); margin: 1.5rem 0;">
+                        <span style="font-weight: 600;">Estimated Total:</span>
+                        <span id="total-price"
+                            style="font-size: 1.5rem; color: var(--primary-copper); font-weight: 700;">$<%=
+                                product.price.toFixed(2) %></span>
+                    </div>
+
+                    <button class="btn btn-primary btn-full" onclick="addToCart()">Add to Cart</button>
+
+                    <div class="mt-1 text-center">
+                        <a href="/products"
+                            style="color: var(--text-muted); font-size: 0.9rem; text-decoration: underline;">← Back to
+                            Products</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const basePrice = <%= product.price %>;
+
+        function updatePrice() {
+            const size = document.getElementById('size').value;
+            const etching = document.getElementById('etching').value;
+            const quantity = parseInt(document.getElementById('quantity').value) || 1;
+
+            let pricePerUnit = basePrice;
+
+            if (size === 'large') {
+                pricePerUnit += 10;
+            } else if (size === 'custom') {
+                pricePerUnit += 15;
+            }
+
+            if (etching && etching.trim().length > 0) {
+                pricePerUnit += 5;
+            }
+
+            const total = pricePerUnit * quantity;
+
+            document.getElementById('display-price').textContent = '$' + pricePerUnit.toFixed(2);
+            document.getElementById('total-price').textContent = '$' + total.toFixed(2);
+        }
+
+        function addToCart() {
+            const size = document.getElementById('size').value;
+            const etching = document.getElementById('etching').value;
+            const quantity = document.getElementById('quantity').value;
+            const total = document.getElementById('total-price').textContent;
+
+            const productName = "<%= product.name %>";
+            const message = `✅ Added to cart!\n\n${productName}\nSize: ${size}\nQuantity: ${quantity}\nTotal: ${total}`;
+
+            alert(message);
+
+            setTimeout(() => {
+                window.location.href = '/cart';
+            }, 500);
+        }
+    </script>
+
+    <%- include('../partials/footer') %>
