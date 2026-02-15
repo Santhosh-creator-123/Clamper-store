@@ -127,10 +127,11 @@ app.get("/products", (req, res) => {
 app.get("/product/:id", (req, res) => {
     const productId = parseInt(req.params.id);
     const product = products.find(p => p.id === productId);
-    res.render("product_detail.ejs", { product: product });
-} else {
-    res.status(404).send("Product not found");
-}
+    if (product) {
+        res.render("product_detail.ejs", { product: product });
+    } else {
+        res.status(404).send("Product not found");
+    }
 });
 
 app.post("/register", async (req, res) => {
