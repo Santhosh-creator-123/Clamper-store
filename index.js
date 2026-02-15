@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 app.use(
     session({
-        secret: process.env.SESSION_SECRET,
+        secret: process.env.SESSION_SECRET || "vandrenser_secret_key",
         resave: false,
         saveUninitialized: false,
         cookie: {
@@ -235,6 +235,11 @@ passport.deserializeUser((user, cb) => {
 });
 
 
-app.listen(port, () => {
-    console.log(`Server listening to the port${port}!`);
-})
+// Only start server locally. Vercel handles this automatically.
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(port, () => {
+        console.log(`Server listening to the port${port}!`);
+    })
+}
+
+export default app;
