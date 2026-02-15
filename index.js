@@ -10,7 +10,7 @@ import crypto from "crypto";
 import axios from "axios";
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const saltRounds = 10;
 env.config();
 app.use(bodyParser.json());
@@ -237,10 +237,6 @@ passport.deserializeUser((user, cb) => {
 
 
 // Only start server locally. Vercel handles this automatically.
-if (process.env.NODE_ENV !== 'production') {
-    app.listen(port, () => {
-        console.log(`Server listening to the port${port}!`);
-    })
-}
-
-module.exports = app;
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
